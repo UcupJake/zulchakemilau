@@ -127,17 +127,29 @@ $products = [['name' => 'Smart Scent Diffuser RoyalMist', 'price' => 4799655, 'v
         </nav>
     </header>
 
-    <h2>Produk Kami</h2>
-    <ul>
-        <?php foreach ($products as $p): ?>
-        <li>
-            <strong><?= $p['name'] ?></strong><br>
-            Harga: Rp <?= number_format($p['price'], 0, ',', '.') ?><br>
-            <?= isset($p['volume']) ? 'Coverage: ' . $p['volume'] . '<br>' : '' ?>
-            Tipe: <?= $p['type'] ?>
-        </li>
-        <?php endforeach; ?>
-    </ul>
+    <div class="container">
+        <h2 class="sub-title">Produk Kami</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nama Produk</th>
+                    <th>Harga</th>
+                    <th>Coverage</th>
+                    <th>Tipe</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($products as $p): ?>
+                <tr>
+                    <td><?= $p['name'] ?></td>
+                    <td>Rp <?= number_format($p['price'], 0, ',', '.') ?></td>
+                    <td><?= isset($p['volume']) ? $p['volume'] : '-' ?></td>
+                    <td><?= $p['type'] ?></td>
+                </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
 </body>
 
 </html>

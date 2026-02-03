@@ -115,7 +115,7 @@
         .submit-btn {
             width: 100%;
             padding: 15px;
-            background-color: #B8860B;
+            background-color: #FF8C00;
             color: white;
             border: none;
             border-radius: 4px;
@@ -129,7 +129,7 @@
         }
 
         .submit-btn:hover {
-            background-color: #9a7109;
+            background-color: #ffb55a;
         }
 
         @media (max-width: 768px) {
