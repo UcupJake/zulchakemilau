@@ -137,6 +137,27 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        input[type="text"],
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+
+        /* Supaya hasil terlihat jelas */
+        #hasil,
+        #hasilAC {
+            background-color: #f0f0f0;
+            /* abu-abu muda */
+            font-weight: bold;
+            color: #333;
+        }
     </style>
 </head>
 
@@ -168,21 +189,21 @@
                 <label for="modeSetting">Pilih Mode Setting:</label>
                 <select id="modeSetting" name="modeSetting" required>
                     <option value="">-- Pilih Mode --</option>
+                    <option value="rendah">Mode Rendah</option>
+                    <option value="sedang">Mode Sedang</option>
+                    <option value="tinggi">Mode Tinggi</option>
                 </select>
             </div>
 
             <div class="form-group">
-                <label for="jamNyala">Jam Nyala Mesin per Hari:</label>
-                <input type="text" id="jamNyala" name="jamNyala" value="Contoh: 8" readonly>
+                <label for="jamNyala">Berapa Jam Mesin Menyala per Hari?</label>
+                <input type="number" id="jamMenyala" name="jamMenyala" placeholder="Contoh: 8">
+
             </div>
 
             <div class="form-group">
                 <label for="hariMenyala">Berapa Hari Mesin Menyala per Minggu?</label>
-                <select id="hariMenyala" name="hariMenyala" required>
-                    <option value="7">7 Hari</option>
-                    <option value="6">6 Hari</option>
-                    <option value="5">5 Hari</option>
-                </select>
+                <input type="number" id="hariMenyala" name="hariMenyala" placeholder="Contoh: 5">
             </div>
 
             <div class="form-group">
@@ -192,7 +213,10 @@
                 </select>
             </div>
 
-            <button type="submit" class="submit-btn">Hitung Konsumsi & Biaya</button>
+            <button type="submit" class="submit-btn" onclick="hitungBiaya()">Hasil Konsumsi & Biaya: </button>
+            {{-- <label for="hasil">Hasil Konsumsi & Biaya:</label> --}}
+            <input type="text" id="hasil" readonly>
+
         </form>
 
         <!-- Section 2: Unit Recommendation -->
@@ -240,9 +264,57 @@
                 </div>
             </div>
 
-            <button type="submit" class="submit-btn">Hitung & Rekomendasikan Unit</button>
+            <button type="submit" class="submit-btn" onclick="hitungAC()">Hasil Rekomendasikan Unit: </button>
+            {{-- <label for="hasilAC">Hasil Rekomendasi Unit:</label> --}}
+            <input type="text" id="hasilAC" readonly>
         </form>
     </div>
+
+    <script>
+        // Script Diffuser
+        function hitungBiaya() {
+            const jamNyala = parseFloat(document.getElementById('jamMenyala').value) || 0;
+            const hariMinggu = parseFloat(document.getElementById('hariMenyala').value) || 0;
+            const hargaOil = parseFloat(document.getElementById('jenisOil').value);
+            const mode = document.getElementById('modeSetting').value;
+
+            let konsumsiPerJam = 0;
+            if (mode === "rendah") konsumsiPerJam = 0.5;
+            if (mode === "sedang") konsumsiPerJam = 1;
+            if (mode === "tinggi") konsumsiPerJam = 2;
+
+            const totalKonsumsi = jamNyala * hariMinggu * konsumsiPerJam;
+            const hargaPerMl = hargaOil / 500;
+            const totalBiaya = totalKonsumsi * hargaPerMl;
+
+            document.getElementById('hasil').value =
+                `Konsumsi: ${totalKonsumsi.toFixed(2)} ml, Biaya: Rp ${totalBiaya.toLocaleString()}`;
+        }
+
+        // Script AC
+        function hitungAC() {
+            const panjang = parseFloat(document.getElementById('panjang').value) || 0;
+            const lebar = parseFloat(document.getElementById('lebar').value) || 0;
+            const tinggi = parseFloat(document.getElementById('tinggi').value) || 0;
+            const jenisRuangan = document.getElementById('jenisRuangan').value;
+            const acCentral = document.getElementById('acCentral').value;
+
+            const volume = panjang * lebar * tinggi; // m3
+            let kebutuhanBTU = volume * 500; // asumsi 500 BTU per m3
+
+            if (jenisRuangan === "restoran") kebutuhanBTU *= 1.2;
+            if (jenisRuangan === "kantor") kebutuhanBTU *= 1.1;
+
+            let rekomendasi = "";
+            if (acCentral === "ya") {
+                rekomendasi = `Gunakan sistem AC Central dengan kapasitas sekitar ${Math.round(kebutuhanBTU)} BTU.`;
+            } else {
+                rekomendasi = `Gunakan AC split dengan kapasitas sekitar ${Math.round(kebutuhanBTU)} BTU.`;
+            }
+
+            document.getElementById('hasilAC').value = rekomendasi;
+        }
+    </script>
 
 </body>
 

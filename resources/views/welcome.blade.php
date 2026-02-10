@@ -125,6 +125,13 @@
     </header>
 
     <div class="container">
+        <h2 class="sub-title">WELCOME TO ZULCHA KEMILAU ADVERTINDO</h2>
+        <p style="text-align: center; font-size: 18px; color: #555;">
+            Your trusted partner in providing high-quality room fragrance solutions for homes and offices. Explore our range of products and find the perfect scent to elevate your space.
+        </p>
+    </div>
+
+    {{-- <div class="container">
         <h2 class="sub-title">PENGHARUM RUANGAN (ROOM PARFUM)</h2>
 
         <table>
@@ -229,7 +236,7 @@
                 </tr>
             </tbody>
         </table>
-    </div>
+    </div> --}}
 
 </body>
 
