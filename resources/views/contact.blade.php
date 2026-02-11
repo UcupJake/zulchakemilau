@@ -117,7 +117,7 @@
         <h1>ZULCHA KEMILAU ADVERTINDO</h1>
         <nav>
             <a href="{{ url('/') }}">Home</a>
-            <a href="{{ route('products') }}">Products</a>
+            <a href="{{ route('products') }}">Catalogue</a>
             <a href="{{ route('calculator') }}">Calculator</a>
             <a href="{{ route('contact') }}">Contact</a>
         </nav>

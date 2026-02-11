@@ -113,6 +113,97 @@ $products = [['name' => 'Smart Scent Diffuser RoyalMist', 'price' => 4799655, 'v
         tr:hover {
             background-color: #fff9f2;
         }
+
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem 4rem;
+        }
+
+        .section-title {
+            margin: 3rem 0 1rem;
+            text-align: center;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 2rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            border: 1px solid #eee;
+            border-radius: 10px;
+            padding: 1.5rem;
+            background: #fff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+        }
+
+        .card h3 {
+            margin-bottom: .5rem;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: .2rem .6rem;
+            border-radius: 999px;
+            font-size: .75rem;
+            background: #ffe9d6;
+            color: #b85b00;
+            margin-bottom: .75rem;
+        }
+
+        .spec-list {
+            list-style: none;
+            padding: 0;
+            margin: .5rem 0 0;
+        }
+
+        .spec-list li {
+            margin-bottom: .25rem;
+            font-size: .9rem;
+        }
+
+        .category-anchor {
+            scroll-margin-top: 100px;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 3rem 1rem 1rem;
+        }
+
+        .hero h1 {
+            font-size: 2rem;
+            margin-bottom: .5rem;
+            text-transform: uppercase;
+        }
+
+        .hero p {
+            max-width: 700px;
+            margin: 0.5rem auto;
+            color: #555;
+        }
+
+        .breadcrumbs {
+            font-size: .85rem;
+            color: #888;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 1.6rem;
+            }
+        }
+
     </style>
 </head>
 
@@ -121,11 +212,34 @@ $products = [['name' => 'Smart Scent Diffuser RoyalMist', 'price' => 4799655, 'v
         <h1>ZULCHA KEMILAU ADVERTINDO</h1>
         <nav>
             <a href="{{ url('/') }}">Home</a>
-            <a href="{{ route('products') }}">Products</a>
+            <a href="{{ route('products') }}">Catalogue</a>
             <a href="{{ route('calculator') }}">Calculator</a>
             <a href="{{ route('contact') }}">Contact</a>
         </nav>
     </header>
+
+    {{-- Hero / Intro --}}
+    <main>
+        <section class="hero">
+            <div class="breadcrumbs">
+                Home &raquo; Catalogue
+            </div>
+            <h1>Catalogue Zulcha Kemilau</h1>
+            <p><strong>Crafting gentle scents for Beautiful Spaces</strong></p>
+            <p>
+                Zulcha Fragrance adalah distributor room fragrance premium yang menghadirkan aroma elegan
+                untuk menciptakan suasana ruang yang berkelas dan berkesan. Setiap fragrance dipilih dengan
+                cermat untuk menghadirkan keseimbangan antara kenyamanan, ketenangan, dan karakter, dengan
+                kualitas aroma yang halus serta tahan lama.
+            </p>
+        </section>
+    </main>
+
+    <div style="width:100%; height:90vh; margin-top:20px;">
+        <iframe src="{{ asset('catalogue/CATALOGUE-ZULCHA-KEMILAU-PROJECT.pdf') }}" width="100%" height="100%"
+            style="border:none;">
+        </iframe>
+    </div>
 
     <div class="container">
         <h2 class="sub-title">Produk Kami</h2>
