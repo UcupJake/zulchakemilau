@@ -16,7 +16,7 @@ $products = [['name' => 'Smart Scent Diffuser RoyalMist', 'price' => 4799655, 'v
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            background-color: #ffe9d6;
         }
 
         /* Header Utama Website */
@@ -30,6 +30,11 @@ $products = [['name' => 'Smart Scent Diffuser RoyalMist', 'price' => 4799655, 'v
             padding: 20px;
             text-align: left;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        header a {
+            color: white;
+            text-decoration: none;
         }
 
         header h1 {
@@ -203,13 +208,14 @@ $products = [['name' => 'Smart Scent Diffuser RoyalMist', 'price' => 4799655, 'v
                 font-size: 1.6rem;
             }
         }
-
     </style>
 </head>
 
 <body>
     <header>
-        <h1>ZULCHA KEMILAU ADVERTINDO</h1>
+        <a href="{{ url('/') }}">
+            <h1>ZULCHA KEMILAU ADVERTINDO</h1>
+        </a>
         <nav>
             <a href="{{ url('/') }}">Home</a>
             <a href="{{ route('products') }}">Catalogue</a>

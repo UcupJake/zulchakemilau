@@ -12,7 +12,7 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            background-color: #ffe9d6;
         }
 
         /* Header Utama Website */
@@ -26,6 +26,11 @@
             padding: 20px;
             text-align: left;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        header a {
+            color: white;
+            text-decoration: none;
         }
 
         header h1 {
@@ -109,12 +114,105 @@
         tr:hover {
             background-color: #fff9f2;
         }
+
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem 4rem;
+            background-color: #ffe9d6;
+        }
+
+        .section-title {
+            margin: 3rem 0 1rem;
+            text-align: center;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 2rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            border: 1px solid #eee;
+            border-radius: 10px;
+            padding: 1.5rem;
+            background: #fff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+        }
+
+        .card h3 {
+            margin-bottom: .5rem;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: .2rem .6rem;
+            border-radius: 999px;
+            font-size: .75rem;
+            background: #ffe9d6;
+            color: #b85b00;
+            margin-bottom: .75rem;
+        }
+
+        .spec-list {
+            list-style: none;
+            padding: 0;
+            margin: .5rem 0 0;
+        }
+
+        .spec-list li {
+            margin-bottom: .25rem;
+            font-size: .9rem;
+        }
+
+        .category-anchor {
+            scroll-margin-top: 100px;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 3rem 1rem 1rem;
+        }
+
+        .hero h1 {
+            font-size: 2rem;
+            margin-bottom: .5rem;
+            text-transform: uppercase;
+        }
+
+        .hero p {
+            max-width: 700px;
+            margin: 0.5rem auto;
+            color: #555;
+        }
+
+        .breadcrumbs {
+            font-size: .85rem;
+            color: #888;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 1.6rem;
+            }
+        }
     </style>
 </head>
 
 <body>
     <header>
-        <h1>ZULCHA KEMILAU ADVERTINDO</h1>
+        <a href="{{ url('/') }}">
+            <h1>ZULCHA KEMILAU ADVERTINDO</h1>
+        </a>
         <nav>
             <a href="{{ url('/') }}">Home</a>
             <a href="{{ route('products') }}">Catalogue</a>
@@ -123,16 +221,18 @@
         </nav>
     </header>
 
-    <h2>Hubungi Kami</h2>
-    <p>Jadwalkan Trial Hari Ini bersama Mbak Ellen!</p>
-    <p>WhatsApp: <a href="https://wa.me/6285183119345">+62 851 8311 9345</a></p>
-    <form method="POST" action="">
-        <label>Nama:</label><input type="text" name="nama">
-        <label>Email:</label><input type="email" name="email">
-        <label>Pesan:</label>
-        <textarea name="pesan"></textarea>
-        <button type="submit">Kirim</button>
-    </form>
+    <main>
+        <h2>Hubungi Kami</h2>
+        <p>Jadwalkan Trial Hari Ini bersama Mbak Ellen!</p>
+        <p>WhatsApp: <a href="https://wa.me/6285183119345">+62 851 8311 9345</a></p>
+        <form method="POST" action="">
+            <label>Nama:</label><input type="text" name="nama">
+            <label>Email:</label><input type="email" name="email">
+            <label>Pesan:</label>
+            <textarea name="pesan"></textarea>
+            <button type="submit">Kirim</button>
+        </form>
+    </main>
 </body>
 
 </html>

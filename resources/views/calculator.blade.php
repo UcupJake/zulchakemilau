@@ -28,6 +28,11 @@
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
 
+        header a {
+            color: white;
+            text-decoration: none;
+        }
+
         header h1 {
             margin: 0;
             letter-spacing: 2px;
@@ -164,7 +169,9 @@
 <body>
 
     <header>
-        <h1>ZULCHA KEMILAU ADVERTINDO</h1>
+        <a href="{{ url('/') }}">
+            <h1>ZULCHA KEMILAU ADVERTINDO</h1>
+        </a>
         <nav>
             <a href="{{ url('/') }}">Home</a>
             <a href="{{ route('products') }}">Catalogue</a>
