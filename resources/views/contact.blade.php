@@ -20,8 +20,8 @@
             background-color: #FF8C00;
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            /* Warna Jingga */
+            align-items: center; /* Warna Jingga */
+            flex-wrap: nowrap; /* Prevents the items from jumping to a new line */
             color: white;
             padding: 20px;
             text-align: left;
@@ -43,12 +43,25 @@
             font-size: 15px
         }
 
-        header nav a {
+        header nav ul {
             color: white;
             text-decoration: none;
             margin-left: 20px;
             transition: color 0.3s;
+            white-space: nowrap; /* Forces all links to stay on one line */
         }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        /* Hide hamburger on desktop */
+        .hamburger {
+            display: none;
+        }
+
+        /* End Header */
 
         .container {
             padding: 20px;
@@ -201,6 +214,44 @@
         }
 
         @media (max-width: 768px) {
+            header nav {
+                position: relative;
+            }
+
+            header h1 {
+                font-size: 18px;
+                /* smaller logo text */
+                line-height: 1.2;
+            }
+
+            .nav-links li {
+                margin: 10px 0;
+                /* vertical spacing for mobile menu */
+            }
+
+            .nav-links {
+                display: none;
+                /* hide menu */
+                flex-direction: column;
+                background: #FF8C00;
+                position: absolute;
+                top: 60px;
+                right: 0;
+                width: 200px;
+                padding: 10px;
+                gap: 8px;
+                /* tighter spacing */
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .hamburger {
+                display: block;
+                cursor: pointer;
+            }
+
             .hero h1 {
                 font-size: 1.6rem;
             }
@@ -214,10 +265,13 @@
             <h1>ZULCHA KEMILAU ADVERTINDO</h1>
         </a>
         <nav>
-            <a href="{{ url('/') }}">Home</a>
-            <a href="{{ route('products') }}">Catalogue</a>
-            <a href="{{ route('calculator') }}">Calculator</a>
-            <a href="{{ route('contact') }}">Contact</a>
+            <div class="hamburger">☰</div>
+            <ul class="nav-links">
+                <a href="{{ url('/') }}">Home</a>
+                <a href="{{ route('products') }}">Catalogue</a>
+                <a href="{{ route('calculator') }}">Calculator</a>
+                <a href="{{ route('contact') }}">Contact</a>
+            </ul>
         </nav>
     </header>
 
@@ -233,6 +287,14 @@
             <button type="submit">Kirim</button>
         </form>
     </main>
+    <script>
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    </script>
 </body>
 
 </html>

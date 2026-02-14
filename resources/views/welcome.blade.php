@@ -26,8 +26,7 @@
             background-color: #FF8C00;
             display: flex;
             justify-content: space-between;
-            flex-wrap: nowrap;
-            /* Prevents the items from jumping to a new line */
+            flex-wrap: nowrap; /* Prevents the items from jumping to a new line */
             align-items: center;
             /* Warna Jingga */
             color: white;
@@ -51,17 +50,17 @@
             font-size: 15px
         }
 
-        .nav-links {
-            display: flex;
-            gap: 20px;
-        }
-
         header nav ul {
             color: white;
             text-decoration: none;
             margin-left: 20px;
             transition: color 0.3s;
             white-space: nowrap; /* Forces all links to stay on one line */            
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
         }
 
         /* Hide hamburger on desktop */
@@ -238,8 +237,7 @@
             }
 
             .nav-links {
-                display: none;
-                /* hide menu */
+                display: none; /* hide menu */
                 flex-direction: column;
                 background: #FF8C00;
                 position: absolute;
@@ -247,8 +245,7 @@
                 right: 0;
                 width: 200px;
                 padding: 10px;
-                gap: 8px;
-                /* tighter spacing */
+                gap: 8px; /* tighter spacing */
             }
 
             .nav-links.active {
