@@ -23,8 +23,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: nowrap;
-            /* Prevents the items from jumping to a new line */
+            flex-wrap: nowrap; /* Prevents the items from jumping to a new line */
             /* Warna Jingga */
             color: white;
             padding: 20px;
