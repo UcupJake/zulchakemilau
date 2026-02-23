@@ -277,6 +277,8 @@
                 <a href="{{ route('products') }}">Catalogue</a>
                 <a href="{{ route('calculator') }}">Calculator</a>
                 <a href="{{ route('contact') }}">Contact</a>
+                <a href="{{ route('login') }}">Login</a>
+                
             </ul>
         </nav>
     </header>

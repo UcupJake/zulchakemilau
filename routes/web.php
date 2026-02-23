@@ -24,7 +24,7 @@ Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 Route::get('/calculator', [CalculatorController::class, 'index'])->name('calculator');
 Route::get('/login', [AdminAuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AdminAuthController::class, 'login'])->name('login.submit');
-Route::post('/logout', [AdminAuthController::class, 'logout'])->name('logout');
+Route::post('/admin/logout', [AdminAuthController::class, 'logout'])->name('admin.logout');
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard')->middleware('auth');
