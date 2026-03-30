@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Product;
 
 class AdminAuthController extends Controller
 {
@@ -30,10 +31,15 @@ class AdminAuthController extends Controller
         Auth::guard('admin')->logout();
         return redirect()->route('home');
     }
-    
+
     public function showLoginForm()
     {
         return view('auth.login');
     }
-    
+
+    public function dashboard()
+    {
+        $products = Product::all(); // fetch all products
+        return view('admin.dashboard', compact('products'));
+    }
 }

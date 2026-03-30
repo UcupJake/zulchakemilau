@@ -278,7 +278,7 @@
             <div class="hamburger">☰</div>
             <ul class="nav-links">
                 <a href="{{ url('/') }}">Home</a>
-                <a href="{{ route('products') }}">Catalogue</a>
+                <a href="{{ route('catalogue') }}">Catalogue</a>
                 <a href="{{ route('calculator') }}">Calculator</a>
                 <a href="{{ route('contact') }}">Contact</a>
                 <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
@@ -290,6 +290,21 @@
             </ul>
         </nav>
     </header>
+
+    <a href="{{ route('products.create') }}" class="btn btn-primary"
+        style="position: fixed; bottom: 20px; right: 20px; border-radius: 50%;">
+        +
+    </a>
+
+    @foreach ($products as $product)
+        <div class="card">
+            <h3>{{ $product->title }}</h3>
+            <p>{{ $product->description }}</p>
+            @if ($product->image_url)
+                <img src="{{ asset('storage/' . $product->image_url) }}" alt="{{ $product->title }}" width="200">
+            @endif
+        </div>
+    @endforeach
 
     <div class="container">
         <h2 class="sub-title">WELCOME TO ZULCHA KEMILAU ADVERTINDO</h2>
