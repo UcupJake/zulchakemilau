@@ -137,6 +137,50 @@
             background-color: #fff9f2;
         }
 
+        .fab {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 56px;
+            height: 56px;
+            background: #007bff;
+            color: #fff;
+            border-radius: 50%;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 999;
+            transition: background 0.2s, box-shadow 0.2s;
+            text-decoration: none;
+            overflow: hidden;
+            padding: 0;
+        }
+
+        .fab-plus {
+            font-size: 2.5rem;
+            font-weight: bold;
+            line-height: 1;
+            text-align: center;
+            width: 100%;
+            height: 100%;
+            color: #fff;
+            pointer-events: none;
+            font-family: Arial, Helvetica, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .fab:hover {
+            background: #0056b3;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.28);
+            color: #fff;
+            text-decoration: none;
+        }
+
         main {
             max-width: 1200px;
             margin: 0 auto;
@@ -291,10 +335,10 @@
         </nav>
     </header>
 
-    <a href="{{ route('products.create') }}" class="btn btn-primary"
+    {{-- <a href="{{ route('products.create') }}" class="btn btn-primary"
         style="position: fixed; bottom: 20px; right: 20px; border-radius: 50%;">
         +
-    </a>
+    </a> --}}
 
     @foreach ($products as $product)
         <div class="card">
@@ -305,6 +349,41 @@
             @endif
         </div>
     @endforeach
+
+    @foreach ($sections as $section)
+        <section id="{{ $section->slug }}" class="category-anchor">
+            <h2 class="section-title">{{ $section->name }}</h2>
+            <p class="section-subtitle">{{ $section->subtitle }}</p>
+            <div class="grid">
+                @foreach ($section->cards as $card)
+                    <article class="card">
+                        <span class="badge">{{ $card->badge }}</span>
+                        @if ($card->image_url)
+                            <img src="{{ asset('storage/' . $card->image_url) }}" alt="{{ $card->name }}">
+                        @endif
+                        <h3>{{ $card->name }}</h3>
+                        <p>{{ $card->description }}</p>
+                        @if ($card->specs)
+                            <ul class="spec-list">
+                                @foreach ($card->specs as $spec)
+                                    <li>{{ $spec }}</li>
+                                @endforeach
+                            </ul>
+                        @endif
+                    </article>
+                @endforeach
+            </div>
+        </section>
+    @endforeach
+
+
+    <!-- Floating Action Button -->
+    <a href="{{ route('sections.create') }}" class="fab" title="Add Section">
+        <span class="fab-plus">+</span>
+    </a>
+    {{-- <a href="{{ route('sections.create') }}" class="fab" title="Add Section">
+        +
+    </a> --}}
 
     <div class="container">
         <h2 class="sub-title">WELCOME TO ZULCHA KEMILAU ADVERTINDO</h2>
@@ -585,3 +664,9 @@
 </body>
 
 </html>
+
+{{-- <!-- Floating Action Button (FAB) -->
+<a href="{{ route('sections.create') }}" class="btn btn-primary"
+   style="position: fixed; bottom: 20px; right: 20px; border-radius: 50%; width: 56px; height: 56px; display: flex; align-items: center; justify-content: center; font-size: 2rem; box-shadow: 0 2px 8px rgba(0,0,0,0.2); z-index: 999;">
+    +
+</a> --}}

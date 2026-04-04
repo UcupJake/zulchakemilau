@@ -10,6 +10,9 @@ use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\SectionController;
+use App\Http\Controllers\CardController;
+
 
 
 Route::get('/', function () {
@@ -30,8 +33,14 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard')->middleware('auth');
 
-Route::get('/admin/dashboard', [ProductController::class, 'dashboard'])->name('admin.dashboard');
+
+// Section and Card resource routes
+//Route::get('/admin/dashboard', [ProductController::class, 'dashboard'])->name('admin.dashboard');
+Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
 Route::resource('products', ProductController::class);
+// Route::get('/admin/dashboard', [SectionController::class, 'dashboard'])->name('admin.dashboard');
+Route::resource('sections', SectionController::class);
+Route::resource('cards', CardController::class);
 
 // Route::prefix('admin')->group(function () {
 //     Route::get('login', [AdminAuthController::class, 'showLoginForm'])->name('admin.login');
